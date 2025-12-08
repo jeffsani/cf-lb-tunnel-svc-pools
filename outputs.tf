@@ -3,26 +3,26 @@
 //Use terraform output -raw failover_tunnel_token to get the token value without quotes from the cli
 //Use terraform output -raw failover_tunnel_id to get the tunnel ID value without quotes from the cli
 
-output "primary_tunnel_id" {
-  value = cloudflare_zero_trust_tunnel_cloudflared.primary.id
+output "cluster_a_tunnel_id" {
+  value = cloudflare_zero_trust_tunnel_cloudflared.cluster_a_tunnel.id
 }
 
-output "primary_tunnel_token" {
-  description = "Token to connect the Primary Tunnel daemon"
+output "cluster_a_tunnel_token" {
+  description = "Token to connect the CLuster B CF Tunnel"
   value       = local.primary_token
   sensitive   = true
 }
 
-output "failover_tunnel_id" {
-  value = cloudflare_zero_trust_tunnel_cloudflared.failover.id
+output "cluster_b_tunnel_id" {
+  value = cloudflare_zero_trust_tunnel_cloudflared.cluster_b_tunnel.id
 }
 
-output "failover_tunnel_token" {
-  description = "Token to connect the Failover Tunnel daemon"
+output "cluster_b_tunnel_token" {
+  description = "Token to connect the Cluster B Tunnel"
   value       = local.failover_token
   sensitive   = true
 }
 
 output "load_balancer_hostname" {
-  value = var.lb_hostname
+  value = var.cluster_lb_hostname
 }
